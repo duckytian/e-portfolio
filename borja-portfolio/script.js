@@ -72,16 +72,13 @@
         if(downloadBtn) {
             downloadBtn.addEventListener('click', () => {
                 const cvText = `Christian Borja — CV\nEducation: BSIT, Cavite State University - Tanza Campus\nSkills: SQL CRUD, Database Management, Web Dev (HTML/CSS/JS), Documentation\nExperience: POS System, CRUD scripts, Capstone Developer\nContact: christian.borja@csu.edu.ph`;
-                const blob = new Blob([cvText], {type: 'application/pdf'});
+                const blob = new Blob([cvText], {type: 'BorjaResume/pdf'});
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'Christian_Borja_CV.pdf';
+                a.download = 'BorjaResume.pdf';
                 document.body.appendChild(a);
                 a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                alert("✓ CV download started (sample PDF).");
             });
         }
 
