@@ -1,0 +1,482 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #050805;
+            color: #e2f0e0;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* dark green / black palette */
+        :root {
+            --dark-green-deep: #0d2818;
+            --dark-green-primary: #1a4d2a;
+            --dark-green-bright: #2d6a4f;
+            --dark-green-accent: #40916c;
+            --black-bg: #050805;
+            --card-dark: #0f1a0f;
+            --border-glow: #2d6a4f;
+            --text-light: #d8f3dc;
+        }
+
+        /* navigation - fixed, glass dark */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 88%;
+            max-width: 1150px;
+            background: rgba(8, 12, 8, 0.96);
+            backdrop-filter: blur(14px);
+            border-radius: 60px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1100;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(45, 106, 79, 0.3);
+            border: 1px solid var(--dark-green-accent);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.7rem;
+            background: linear-gradient(135deg, #74c69d, #2d6a4f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #cfe9cf;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            font-size: 0.95rem;
+            padding: 6px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #52b788;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #95d5b2;
+            transform: translateY(-2px);
+        }
+
+        /* main content spacing */
+        main {
+            padding-top: 100px;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: opacity 0.5s ease, transform 0.4s ease;
+        }
+
+        /* HOME section — dashboard layout (image right, text left) */
+        #home {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 2rem 4rem 2rem;
+        }
+
+        /* section title with leaf accent */
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 2.2rem;
+            color: #95d5b2;
+            display: inline-block;
+            position: relative;
+        }
+        .section-title:after {
+            font-size: 1.9rem;
+            margin-left: 12px;
+            opacity: 0.8;
+        }
+
+        /* HERO / DASHBOARD: left text + right image (matching reference image) */
+        .hero-dashboard {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-left {
+            flex: 1.2;
+            text-align: left;
+        }
+        .hero-left .greeting-badge {
+            background: #1a4d2a60;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(2px);
+            margin-bottom: 1rem;
+        }
+        .hero-left h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0.8rem 0;
+            background: linear-gradient(135deg, #b7e4c7, #52b788);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-left .hero-tagline {
+            font-size: 1.3rem;
+            color: #95d5b2;
+            margin-bottom: 1rem;
+        }
+        .hero-left p {
+            margin-top: 0.8rem;
+            max-width: 90%;
+        }
+        .hero-right {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-image-frame {
+            background: linear-gradient(145deg, #1a3a1a, #0f2a0f);
+            border-radius: 35% 65% 70% 30% / 40% 50% 50% 60%;
+            padding: 12px;
+            border: 2px solid var(--dark-green-accent);
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+        /* Real profile picture container — using a modern avatar that resembles a developer image */
+        .profile-image-frame img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 35% 65% 70%;
+            display: block;
+        }
+        /* Custom profile image: I will use a stylish SVG / data-url representing Christian's portrait (modern, professional) */
+        .custom-profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 30% 70% 70% 30% / 30% 35% 65% 70%;
+            display: block;
+            background: linear-gradient(125deg, #2d6a4f, #1b4d2b);
+            object-fit: cover;
+        }
+        /* Avatar fallback but now we inject a real illustrated dev picture (clean) */
+        .avatar-placeholder {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #2d6a4f, #1a4d2a);
+            border-radius: 30% 70% 70% 30% / 30% 35% 65% 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #b7e4c7;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* cards grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: var(--card-dark);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid #2d4a2d;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.7);
+            border-color: var(--dark-green-accent);
+        }
+
+        .img-placeholder {
+            background: linear-gradient(145deg, #1a3a1a, #0f2a0f);
+            height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #74c69d;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #b7e4c7;
+        }
+
+        .btn {
+            background: var(--dark-green-primary);
+            color: #e2f0e0;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--dark-green-accent);
+            color: #b7e4c7;
+        }
+        .btn-outline:hover {
+            background: var(--dark-green-accent);
+            color: #050805;
+            transform: scale(1.02);
+        }
+
+        .project-details {
+            margin-top: 1rem;
+            padding: 0.9rem;
+            background: #0f1e12;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: none;
+            transition: 0.2s;
+            border-left: 3px solid var(--dark-green-accent);
+        }
+        .project-details.show {
+            display: block;
+            animation: fadeSlideUp 0.3s ease;
+        }
+
+        /* about me double column - pushed lower via spacing */
+        #about {
+            scroll-margin-top: 90px;
+        }
+        .about-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: #0d180dcc;
+            backdrop-filter: blur(3px);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #2b4a2b;
+        }
+        .about-text {
+            flex: 2;
+        }
+        .interests-box {
+            flex: 1;
+            background: #0f1a0f;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #2d6a4f;
+        }
+        .skill-badge {
+            display: inline-block;
+            background: #1a2e1a;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            margin: 0.3rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            border: 1px solid #2d6a4f;
+            color: #cfe9cf;
+        }
+
+        /* resume section */
+        .resume-container {
+            background: #0d180d;
+            border-radius: 2rem;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+            border: 1px solid #2d4a2d;
+        }
+        .resume-left, .resume-right {
+            flex: 1;
+        }
+        .resume-item {
+            margin-bottom: 1.5rem;
+        }
+        .download-cv {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* contact form + socials */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .form-card {
+            flex: 2;
+            background: #0d180d;
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            border: 1px solid #2d6a4f;
+        }
+        .social-card {
+            flex: 1;
+            background: #0f1a0f;
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            border: 1px solid #2d6a4f;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #2d5a2d;
+            border-radius: 1rem;
+            font-family: inherit;
+            background: #0a100a;
+            color: #d8f3dc;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #52b788;
+            box-shadow: 0 0 0 2px rgba(82, 183, 136, 0.3);
+        }
+        .error {
+            color: #e07c6c;
+            font-size: 0.7rem;
+            margin-top: -0.7rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .form-success {
+            color: #74c69d;
+            margin-top: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Social icons styling — improved interactive links */
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: #1a2a1a;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            margin: 0.5rem 0.5rem 0 0;
+            text-decoration: none;
+            color: #cfe9cf;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid #2d6a4f;
+            cursor: pointer;
+        }
+        .social-icon:hover {
+            background: #2d6a4f;
+            color: #050805;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #071007;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #1e3a1e;
+        }
+
+        /* animations */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .fade-on-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.6s ease;
+        }
+        .fade-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* page transition effect when clicking nav */
+        .page-transition {
+            transition: opacity 0.35s ease-out, transform 0.3s ease-out;
+        }
+        .fade-out {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        button, .btn, .social-icon { cursor: pointer; }
+        
+        @media (max-width: 780px) {
+            .navbar {
+                width: 94%;
+                padding: 0.6rem 1.2rem;
+                top: 12px;
+            }
+            .nav-links { gap: 1rem; }
+            section { padding: 2.5rem 1rem; }
+            .section-title { font-size: 1.8rem; }
+            .hero-dashboard { flex-direction: column; text-align: center; }
+            .hero-left p { max-width: 100%; }
+            .hero-left { text-align: center; }
+            .profile-image-frame img, .avatar-placeholder, .custom-profile-img { width: 200px; height: 200px; }
+        }+++
